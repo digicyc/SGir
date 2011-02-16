@@ -8,7 +8,7 @@
 import com.mongodb.casbah.Imports._
 
 class Users {
-  private val mongoColl = MongoConnection()("sgir")("users")
+  private val mongoColl = MongoConnection("hazmat.cc")("sgir")("users")
 
   def getOP(user: String) = {
     val userOp = mongoColl.findOne(MongoDBObject("user" -> user)).foreach {
