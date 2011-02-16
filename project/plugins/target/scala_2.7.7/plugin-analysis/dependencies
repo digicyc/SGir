@@ -1,0 +1,4 @@
+#Source Dependencies
+#Mon Feb 14 11:05:28 MST 2011
+src_managed/installer-plugin-0.3.0/SelfExtractingProject.scala=
+src_managed/sbt-idea-plugin-0.2.0/IdeaProject.scala=

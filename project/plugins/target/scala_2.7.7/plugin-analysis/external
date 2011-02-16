@@ -1,0 +1,7 @@
+#External Dependencies
+#Mon Feb 14 11:05:28 MST 2011
+/usr/lib/jvm/java-6-openjdk/jre/lib/rt.jar=src_managed/installer-plugin-0.3.0/SelfExtractingProject.scala
+/opt/jdk1.6.0_21/jre/lib/rt.jar=src_managed/sbt-idea-plugin-0.2.0/IdeaProject.scala
+/home/aaron/Coding/Scala/Projects/SGir/project/boot/scala-2.7.7/org.scala-tools.sbt/sbt/0.7.4/sbt_2.7.7-0.7.4.jar=src_managed/sbt-idea-plugin-0.2.0/IdeaProject.scala\:src_managed/installer-plugin-0.3.0/SelfExtractingProject.scala
+/home/aaron/Coding/Scala/Projects/SGir/project/plugins/lib_managed/scala_2.7.7/sbt-idea-core_2.7.7-0.2.0.jar=src_managed/sbt-idea-plugin-0.2.0/IdeaProject.scala
+/home/aaron/Coding/Scala/Projects/SGir/project/boot/scala-2.7.7/lib/scala-library.jar=src_managed/sbt-idea-plugin-0.2.0/IdeaProject.scala\:src_managed/installer-plugin-0.3.0/SelfExtractingProject.scala
