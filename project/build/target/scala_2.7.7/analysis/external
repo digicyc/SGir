@@ -1,7 +1,7 @@
 #External Dependencies
-#Wed Feb 16 12:40:41 MST 2011
-/home/aaron/Coding/Scala/Projects/SGir/project/plugins/target/scala_2.7.7/plugin-classes/IdeaProject$class.class=SGir.scala
-/opt/jdk1.6.0_21/jre/lib/rt.jar=SGir.scala
-/home/aaron/Coding/Scala/Projects/SGir/project/boot/scala-2.7.7/org.scala-tools.sbt/sbt/0.7.4/sbt_2.7.7-0.7.4.jar=SGir.scala
-/home/aaron/Coding/Scala/Projects/SGir/project/plugins/target/scala_2.7.7/plugin-classes/IdeaProject.class=SGir.scala
-/home/aaron/Coding/Scala/Projects/SGir/project/boot/scala-2.7.7/lib/scala-library.jar=SGir.scala
+#Wed Feb 16 15:44:07 MST 2011
+/home/aaron/Coding/Scala/Projects/SGir/project/plugins/target/scala_2.7.7/plugin-classes/IdeaProject$class.class=SGirProject.scala
+/opt/jdk1.6.0_21/jre/lib/rt.jar=SGirProject.scala
+/home/aaron/Coding/Scala/Projects/SGir/project/boot/scala-2.7.7/org.scala-tools.sbt/sbt/0.7.4/sbt_2.7.7-0.7.4.jar=SGirProject.scala
+/home/aaron/Coding/Scala/Projects/SGir/project/plugins/target/scala_2.7.7/plugin-classes/IdeaProject.class=SGirProject.scala
+/home/aaron/Coding/Scala/Projects/SGir/project/boot/scala-2.7.7/lib/scala-library.jar=SGirProject.scala
