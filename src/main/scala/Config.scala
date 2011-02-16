@@ -6,14 +6,17 @@
  */
 package org.antitech.sgir
 
-import java.util.Properties
-
+import net.lag.configgy.Configgy
+import net.lag.logging.Logger
 
 object Config  {
-  private var conf = null
-  private val configFile = "etc/sgir.conf"
+  Configgy.configure("conf/sgir.conf")
+  private var config = Configgy.config
 
   def reloadConfig = {
-
+    Configgy.configure("conf/sgir.conf")
+    config = Configgy.config
   }
+
+
 }
