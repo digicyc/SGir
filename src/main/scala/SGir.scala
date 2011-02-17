@@ -3,13 +3,13 @@ package org.antitech.sgir
 import org.jibble.pircbot.PircBot
 
 class SGir extends PircBot {
-  private val name: String = "SGir"
-  // Hostname in Freenode only.
-  private val adminHost: String = "unaffiliated/digicyc"
+  private val config = Config.config
+  private val botName: String = config.getString("botName")
+  private val adminHost: String = config.getString("adminHost")
   private val socPrint: SocPrint = new SocPrint
 
-  setName("SGir")
-  setLogin("SGir")
+  setName(botName)
+  setLogin(botName)
 
   // Is called whenever any message is sent.
   override def onMessage(chan: String, sender: String,
@@ -101,6 +101,17 @@ class SGir extends PircBot {
   // Check if the current users host is that of the admins.
   def isAdminHost(hostName: String): Boolean = {
    hostName.startsWith(adminHost)
+  }
+
+  override def onJoin(channel: String, joiner: String, login: String,
+                       hostname: String)
+  {
+    config.getList("opsList").foreach{
+      isOps =>
+      if (hostname == isOps) {
+        op(channel, joiner)
+      }
+    }
   }
 
   // Parse out the message sent for any possible commands.
