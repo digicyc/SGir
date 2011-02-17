@@ -4,8 +4,8 @@ import org.jibble.pircbot.PircBot
 
 class SGir extends PircBot {
   private val config = Config.config
-  private val botName: String = config.getString("botName")
-  private val adminHost: String = config.getString("adminHost")
+  private val botName = config.getString("botName")
+  private val adminHost = config.getString("adminHost")
   private val socPrint: SocPrint = new SocPrint
 
   setName(botName)
