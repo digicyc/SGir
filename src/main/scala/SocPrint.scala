@@ -2,13 +2,13 @@ package org.antitech.sgir
 
 import com.sendoutcards.socprint._
 import datasourceplanutils.{DataSourcePlanUtilsSSPSoap, DataSourcePlanUtilsSSP,
-                            RecipientsInfo}
+RecipientsInfo}
 import planutils.{PlanUtilsSSPSoap, PlanUtilsSSP, PlanFilter}
 
 class SocPrint extends SoapCred {
-  private lazy val statChecker: DataSourcePlanUtilsSSPSoap = 
+  private lazy val statChecker: DataSourcePlanUtilsSSPSoap =
     (new DataSourcePlanUtilsSSP()).getDataSourcePlanUtilsSSPSoap()
-  private lazy val planUtils: PlanUtilsSSPSoap = 
+  private lazy val planUtils: PlanUtilsSSPSoap =
     (new PlanUtilsSSP()).getPlanUtilsSSPSoap()
 
   def getFilters(cardType: String): List[PlanFilter] = {

@@ -5,6 +5,7 @@
  *
  * Manages users through a mongodb database.
  */
+
 import com.mongodb.casbah.Imports._
 
 class Users {
@@ -13,7 +14,7 @@ class Users {
   def getOP(user: String) = {
     val userOp = mongoColl.findOne(MongoDBObject("user" -> user)).foreach {
       x =>
-      x.get("is_op")
+        x.get("is_op")
     }
     //userOp.get("is_op")
   }
