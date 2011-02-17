@@ -11,10 +11,8 @@ import net.lag.logging.Logger
 
 object Config  {
   Configgy.configure("conf/sgir.conf")
-
-  def logger = Logger.get
-
-  def config = Configgy.config
+  val logger = Logger.get
+  var config = Configgy.config
 
   def reloadConfig = {
     Configgy.configure("conf/sgir.conf")
