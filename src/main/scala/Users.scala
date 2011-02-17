@@ -11,11 +11,5 @@ import com.mongodb.casbah.Imports._
 class Users {
   private val mongoColl = MongoConnection("hazmat.cc")("sgir")("users")
 
-  def getOP(user: String) = {
-    val userOp = mongoColl.findOne(MongoDBObject("user" -> user)).foreach {
-      x =>
-        x.get("is_op")
-    }
-    //userOp.get("is_op")
-  }
+
 }
