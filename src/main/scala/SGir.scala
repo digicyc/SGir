@@ -28,11 +28,16 @@ class SGir extends PircBot {
           arguments.reduceLeft[String] {
             (y, z) => y + " " + z
           })
+        case "=reload" => config.reload()
         case "=exit" => System.exit(1)
         case "=reverse" => sendMessage(chan,
           arguments.reduceLeft[String] {
             (y, z) => z + " " + y
           })
+        case "=op" =>
+          arguments.foreach(op(chan, _))
+        case "=deop" =>
+          arguments.foreach(deOp(chan, _))
         case "=print" =>
           arguments.head.toLowerCase match {
             case " stats" =>
