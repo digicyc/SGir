@@ -9,7 +9,17 @@
 import com.mongodb.casbah.Imports._
 
 class Users {
-  private val mongoColl = MongoConnection("hazmat.cc")("sgir")("users")
+  private val mongConn = MongoConnection("hazmat.cc")("sgir")
 
+  def getLastSaid(user: String): String = {
+    val mongoColl = mongConn("last_said")
+    val lastSaid = mongoColl.find(MongoDBObject("user" -> user))
 
+    for { x <- lastSaid } yield x
+  }
+
+  def saveLastSaid(user: String, msg: String) {
+    val mongoColl = mongConn("last_said")
+    mongoColl.save(MongoDBObject(""))
+  }
 }
