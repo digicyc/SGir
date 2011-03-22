@@ -32,7 +32,7 @@ class Users {
   }
 
   def getHate(user: String): Int = {
-    0
+    5
   }
 
   def addPoint(user: String, point: Int) {
