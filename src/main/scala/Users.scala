@@ -8,38 +8,34 @@
 package org.antitech.sgir
 
 import com.mongodb.casbah.Imports._
+import java.text.SimpleDateFormat
+import java.util.Date
 
-class Users {
+class User(val name: String, val host: String) {
   private val config = Config.config
-  private val mongConn = MongoConnection("hazmat.cc")("sgir")
+  var lastSaid = ""
+
   /*
-   * Return TimeStamp and Message that was last said by user.
+   * Don't store in DB cause were not creepy like that.
    */
-  def getLastSaid(user: String): String = {
-    val mongoColl = mongConn("last_said")
-    //val lastSaid = mongoColl.find(MongoDBObject("user" -> user))
+  def setLastSaid(msg: String) =
+    lastSaid = "[" + new Date + "]: " + msg
 
-    ""
+
+  def addHate(level: Int) {
+    val hateObj = MongoDBOBject("user" -> name)
+    
   }
 
-  def saveLastSaid(user: String, msg: String) {
-    val mongoColl = mongConn("last_said")
-    //mongoColl.save(MongoDBObject(""))
-  }
-
-  def addHate(user: String, level: Int) {
-
-  }
-
-  def getHate(user: String): Int = {
+  def getHate(): Int = {
     5
   }
 
-  def addPoint(user: String, point: Int) {
+  def addPoint(point: Int) {
 
   }
 
-  def getPoint(user: String): Int = {
+  def getPoint(): Int = {
     0
   }
 }
