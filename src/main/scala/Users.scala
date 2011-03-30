@@ -3,7 +3,7 @@
  * Date: 2/15/11
  * Time: 4:55 PM
  *
- * Manages users through a mongodb database.
+ * User object created for each user in a channel.
  */
 package org.antitech.sgir
 
@@ -13,17 +13,28 @@ import java.util.Date
 
 class User(val name: String, val host: String) {
   private val config = Config.config
-  var lastSaid = ""
+  private var _lastSaid = ""
+
+
+  def lastSaid = _lastSaid
 
   /*
    * Don't store in DB cause were not creepy like that.
    */
-  def setLastSaid(msg: String) =
-    lastSaid = "[" + new Date + "]: " + msg
+  def lastSaid_=(msg: String) =
+    _lastSaid = "[" + new Date + "]: " + msg
 
 
+  /*
+   * We assume user object always exists.
+   * Increment the Hate level of a user.
+   */
   def addHate(level: Int) {
-    val hateObj = MongoDBOBject("user" -> name)
+    val hateColl = MongoHandler.getHateColl()
+    val userObj = MongoDBObject("host" -> host)
+
+    val userData = hateColl.find(userObj)
+    // userData now has a Cursor object
     
   }
 
@@ -31,11 +42,14 @@ class User(val name: String, val host: String) {
     5
   }
 
-  def addPoint(point: Int) {
+  /*
+   * Increment Karma level
+   */
+  def addKarma(point: Int) {
 
   }
 
-  def getPoint(): Int = {
+  def getKarma(): Int = {
     0
   }
 }
