@@ -16,3 +16,8 @@ jabberServer = "jabber.org"
 jabberId = "sgir"
 jabberPass = " "
 jabberList = ["test@jabber.org", "myJID@jabber.org"]
+
+xmpie {
+  username = ""
+  password = ""
+}
