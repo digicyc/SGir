@@ -2,7 +2,8 @@ package org.antitech.sgir
 
 import org.jibble.pircbot.PircBot
 
-class SGir extends PircBot {
+
+object SGir extends PircBot {
   private val config = Config.config
   private val botName = config.getString("botName").get
   private val adminHost = config.getString("adminHost").get
@@ -128,4 +129,9 @@ class SGir extends PircBot {
 
     List(command, argument)
   }
+
+  def main(args: Array[String]): Unit = {
+      connect(Config.config("ircServer"))
+      Config.config.getList("channels").foreach(joinChannel(_))
+    }
 }
