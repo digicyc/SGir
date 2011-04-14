@@ -37,6 +37,7 @@ trait SoapCred {
       case "2panel" => twoPdataSource
       case "3panel" => threePdataSource
       case "postcard" => postCdataSource
+      case "postcard" => postCdataSource
     }
   }
 }
