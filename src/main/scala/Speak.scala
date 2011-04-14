@@ -24,7 +24,7 @@ object Speak {
     "head"      -> "Your head smells like a puppy!",
     "dog"       -> "MEOW!",
     "hug"       -> "Somebody needs a hug!",
-    "explode"   -> "Awwwww... I wantedf to explode.",
+    "explode"   -> "Awwwww... I wanted to explode.",
     "executive" -> "I am exec man, come from the execs. The execs has sent me.",
     "tacos1"    -> "But I need tacos! I need them or I will explode",
     "tacos2"    -> "Taco. Taco. Taco.",
@@ -33,19 +33,85 @@ object Speak {
     "squirrel2" -> "I saw a squirrel, he was doin' like this.........",
     "run"       -> "I'm runnin'-I'm runnin', I'm naked, And I'm Runnin'!",
     "leave"     -> "No wait-come back. I need shtuff.",
-    "eslode"    -> "Awww.. I wanted to esplode.."
+    "esplode"    -> "Awww.. I wanted to esplode.."
   )
 
-  private def trackTime() {
-
+  private var lastRand = -1
+  private def randomize(seed: Int): Int = {
+    val rand = new util.Random
+    var randVal = -1
+    while( randVal == lastRand )
+      randVal = rand.nextInt(seed)
+    lastRand = randVal
+    randVal
   }
 
   def getQuote(msg: String): String = {
-    val words = msg.split(" ")
-    val response =
-      girQuotes filterKeys { myKey =>
-        myKey contains word;
-        getRandomQuote()
+    val umsg = msg.toLowerCase
+
+    if (umsg contains "pig") {
+      randomize(3) match {
+        case 0 => girQuotes("pig1")
+        case 1 => girQuotes("pig2")
+        case 2 => girQuotes("pig3")
+        case _ => girQuotes("pig3")
       }
+    }
+    else if( (umsg contains "biscuit") || (umsg contains "waffle") ) {
+      girQuotes("biscuit")
+    }
+    else if( umsg contains "run" ) {
+      girQuotes("run")
+    }
+    else if( umsg contains "show" ) {
+      girQuotes("show")
+    }
+    else if( umsg contains "dog" ) {
+      girQuotes("dog")
+    }
+    else if( umsg contains "leave" ) {
+      girQuotes("leave")
+    }
+    else if( umsg contains "doom" ) {
+      randomize(3) match {
+        case 0 => girQuotes("doomsong1")
+        case 1 => girQuotes("doomsong2")
+        case 2 => girQuotes("doomsong3")
+      }
+    }
+    else if( umsg contains "mission" ) {
+      girQuotes("mission")
+    }
+    else if( umsg contains "monkey" ) {
+      randomize(2) match {
+        case 0 => girQuotes("monkey1")
+        case 1 => girQuotes("monkey2")
+      }
+    }
+    else if( umsg contains "head" ) {
+      girQuotes("head")
+    }
+    else if( umsg contains "explode" ) {
+      girQuotes("explode")
+    }
+    else if( umsg contains "squirrel" ) {
+      randomize(2) match {
+        case 0 => girQuotes("squirrel1")
+        case 1 => girQuotes("squirrel2")
+      }
+    }
+    else if( umsg contains "taco" ) {
+      randomize(3) match {
+        case 0 => girQuotes("tacos1")
+        case 1 => girQuotes("tacos2")
+        case 2 => girQuotes("tacos3")
+      }
+    }
+    else if( umsg contains "exec" ) {
+      girQuotes("executive")
+    }
+    else {
+      ""
+    }
   }
 }

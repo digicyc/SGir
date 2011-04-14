@@ -81,12 +81,17 @@ object SGir extends PircBot {
       }
     }
     if (msg.toLowerCase().startsWith("sgir")) {
+      //if (isAdminHost(host)) {
+      //  sendMessage(chan, sender + ": Anything you want!")
+      //  sendMessage(chan, sender + ": You're the MAN!")
+      //}
       val speak = Speak.getQuote(msg)
-      if (isAdminHost(host)) {
-        sendMessage(chan, sender + ": Anything you want!")
-        sendMessage(chan, sender + ": You're the MAN!")
+      if( speak != "" ) {
+        sendMessage(chan, speak)
       }
-      sendMessage(chan, speak)
+      else {
+        sendMessage(chan, "o_O")
+      }
     }
   }
 

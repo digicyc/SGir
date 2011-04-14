@@ -1,3 +1,5 @@
+package org.antitech.sgir
+
 /**
  * User: aaron
  * Date: 4/10/11
@@ -6,10 +8,10 @@
 
 object Commands {
   def processAdminCmd(): String = {
-
+    ""
   }
 
   def processNormCmd(): String = {
-
+    ""
   }
 }

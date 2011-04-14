@@ -1,3 +1,5 @@
+package org.antitech.sgir
+
 /**
  * User: aaron
  * Date: 2/15/11
@@ -5,13 +7,12 @@
  *
  * User object created for each user in a channel.
  */
-package org.antitech.sgir
 
 import com.mongodb.casbah.Imports._
 import java.text.SimpleDateFormat
 import java.util.Date
 
-class User(val name: String, val host: String) {
+class User(val name: String, val host: String, val chan: String) {
   private val config = Config.config
   private var _lastSaid = ""
 
