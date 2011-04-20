@@ -40,8 +40,10 @@ object Speak {
   private def randomize(seed: Int): Int = {
     val rand = new util.Random
     var randVal = -1
-    while( randVal == lastRand )
+    do {
       randVal = rand.nextInt(seed)
+    }
+    while( randVal == lastRand )
     lastRand = randVal
     randVal
   }
