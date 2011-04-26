@@ -1,0 +1,18 @@
+log {
+    filename = "logs/sgir.log"
+    roll = "sunday"
+    level = "debug"
+}
+
+botName = "SGir"
+ircServer = "irc.freenode.net"
+channels = ["#chan1", "#botfactory", "#chan2"]
+port = 3000
+admin = "adminName"
+adminHost = "unaffiliated/BotAdmin"
+opsList = ["unaffiliated/digicyc", "antitech.org", "1.2.3.4.us.xo.net",
+         "fake_host.net"]
+jabberServer = "jabber.org"
+jabberId = "sgir"
+jabberPass = " "
+jabberList = ["test@jabber.org", "myJID@jabber.org"]
