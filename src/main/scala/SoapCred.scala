@@ -1,8 +1,8 @@
 package org.antitech.sgir
 
 trait SoapCred {
-  val uName: String = "sendoutcards\\aaron"
-  val password: String = "socprint"
+  val uName: String = Config.config("xmpie.username")
+  val password: String = Config.config("xmpie.password")
   // The Document ID's. Attached to the Ind Template.
   val twoPanel: String = "125"
   val threePanel: String = "128"

@@ -16,4 +16,4 @@ Reasons
 Main reason for SGir was to give live updates to an
 irc channel of my companies current print status'.
 Basically he connects to a VDP Print Output Engine via
-a SOAP API and gives live feeds to the any specified #channel.
+a SOAP API and gives live feeds to any specified #channel.

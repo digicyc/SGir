@@ -2,7 +2,8 @@ package org.antitech.sgir
 
 import org.jibble.pircbot.PircBot
 
-class SGir extends PircBot {
+
+object SGir extends PircBot {
   private val config = Config.config
   private val botName = config.getString("botName").get
   private val adminHost = config.getString("adminHost").get
@@ -80,13 +81,16 @@ class SGir extends PircBot {
       }
     }
     if (msg.toLowerCase().startsWith("sgir")) {
-      if (isAdminHost(host)) {
-        sendMessage(chan, sender + ": Anything you want!")
-        sendMessage(chan, sender + ": You're the MAN!")
+      //if (isAdminHost(host)) {
+      //  sendMessage(chan, sender + ": Anything you want!")
+      //  sendMessage(chan, sender + ": You're the MAN!")
+      //}
+      val speak = Speak.getQuote(msg)
+      if( speak != "" ) {
+        sendMessage(chan, speak)
       }
       else {
-        sendMessage(chan, sender + ": what u say?")
-        sendMessage(chan, sender + ": i keel u")
+        sendMessage(chan, "o_O")
       }
     }
   }
@@ -128,4 +132,9 @@ class SGir extends PircBot {
 
     List(command, argument)
   }
+
+  def main(args: Array[String]): Unit = {
+      connect(Config.config("ircServer"))
+      Config.config.getList("channels").foreach(joinChannel(_))
+    }
 }
