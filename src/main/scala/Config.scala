@@ -4,7 +4,7 @@
  * Time: 11:14 AM
  *
  */
-package org.antitech.sgir
+package antitech.sgir
 
 import net.lag.configgy.Configgy
 import net.lag.logging.Logger

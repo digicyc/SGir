@@ -1,4 +1,4 @@
-package org.antitech.sgir
+package antitech.sgir
 
 import com.sendoutcards.socprint._
 import datasourceplanutils.{DataSourcePlanUtilsSSPSoap, DataSourcePlanUtilsSSP,

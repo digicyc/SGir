@@ -9,6 +9,9 @@ syntax: glob
 .DS_Store
 *.db
 
+# Local conf
+conf/sgir.conf
+
 # logs
 derby.log
 

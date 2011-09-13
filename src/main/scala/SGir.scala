@@ -1,6 +1,8 @@
-package org.antitech.sgir
+package antitech.sgir
 
+import model.{User, MongoConfig}
 import org.jibble.pircbot.PircBot
+import org.joda.time.DateTime
 
 
 object SGir extends PircBot {
@@ -11,6 +13,7 @@ object SGir extends PircBot {
 
   setName(botName)
   setLogin(botName)
+  MongoConfig.init
 
   // Is called whenever any message is sent.
   override def onMessage(chan: String, sender: String,
@@ -115,13 +118,40 @@ object SGir extends PircBot {
     hostName.startsWith(adminHost)
   }
 
-  override def onJoin(channel: String, joiner: String, login: String,
-                      hostname: String) {
-    config.getList("opsList").foreach {
-      isOps =>
-        if (hostname == isOps) {
-          op(channel, joiner)
-        }
+  override def onJoin(channel: String, joiner: String, login: String, hostname: String) {
+    isOps(joiner, hostname)
+    checkIn(channel, joiner, login, hostname)
+  }
+
+  def checkIn(channel: String, joiner: String, login: String, hostname: String): User = {
+    val user = User where (_.hostname eqs hostname) get
+    if (user.length < 1) {
+      // If no user can be found then we create em.
+      val newUser = User.createRecord
+        .alias(joiner)
+        .name("")
+        .channel(channel)
+        .hostname(hostname)
+        .karma(0)
+        .is_admin(false)
+        .logged_on(new DateTime)
+        .has_access(false)
+        .save
+      newUser
+    } else {
+      User where (_.hostname eqs hostname) modify (_.logged_on setTo new DateTime) and
+        (_.alias setTo joiner)
+      val userQuery = User where (_.hostname eqs hostname) fetch
+      userQuery(0)
+    }
+  }
+  
+
+  def isOps(joiner: String, hostname: String) {
+    config.getList("opsList").foreach { isOps =>
+      if (hostname == isOps) {
+        op(channel, joiner)
+      }
     }
   }
 
