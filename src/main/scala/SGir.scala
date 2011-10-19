@@ -3,17 +3,24 @@ package antitech.sgir
 import model.{User, MongoConfig}
 import org.jibble.pircbot.PircBot
 import org.joda.time.DateTime
+import com.foursquare.rogue.Rogue._
 
 
 object SGir extends PircBot {
   private val config = Config.config
   private val botName = config.getString("botName").get
   private val adminHost = config.getString("adminHost").get
-  private val socPrint: SocPrint = new SocPrint
 
   setName(botName)
   setLogin(botName)
   MongoConfig.init
+
+  /**
+    * Will check everyone in each channel we are in into our system.
+    */
+  def checkChannelIn = {
+    val allUsers =  ""
+  }
 
   // Is called whenever any message is sent.
   override def onMessage(chan: String, sender: String,
@@ -42,7 +49,7 @@ object SGir extends PircBot {
           arguments.foreach(op(chan, _))
         case "=deop" =>
           arguments.foreach(deOp(chan, _))
-        case "=print" =>
+        /*case "=print" =>
           arguments.head.toLowerCase match {
             case " stats" =>
               arguments.tail.head match {
@@ -68,8 +75,8 @@ object SGir extends PircBot {
                 case _ =>
                   sendMessage(chan, "No option: " + arguments.head)
               }
-          }
-        case _ => null
+          }*/
+        case _ => None
       }
     }
     // ! commands are for everyone.
@@ -80,20 +87,16 @@ object SGir extends PircBot {
         case "!say" =>
           sendMessage(chan, sender + " wants me to say: " +
             commArg(1))
-        case _ => null
+        case _ => None
       }
     }
     if (msg.toLowerCase().startsWith("sgir")) {
-      //if (isAdminHost(host)) {
-      //  sendMessage(chan, sender + ": Anything you want!")
-      //  sendMessage(chan, sender + ": You're the MAN!")
-      //}
       val speak = Speak.getQuote(msg)
-      if( speak != "" ) {
+      if (speak != "") {
         sendMessage(chan, speak)
       }
       else {
-        sendMessage(chan, "o_O")
+        sendMessage(chan, "[o_O]")
       }
     }
   }
@@ -119,39 +122,37 @@ object SGir extends PircBot {
   }
 
   override def onJoin(channel: String, joiner: String, login: String, hostname: String) {
-    isOps(joiner, hostname)
+    isOps(joiner, hostname, channel)
     checkIn(channel, joiner, login, hostname)
   }
 
   def checkIn(channel: String, joiner: String, login: String, hostname: String): User = {
     val user = User where (_.hostname eqs hostname) get
-    if (user.length < 1) {
+
+    if (user == None) {
       // If no user can be found then we create em.
-      val newUser = User.createRecord
-        .alias(joiner)
-        .name("")
-        .channel(channel)
-        .hostname(hostname)
-        .karma(0)
-        .is_admin(false)
-        .logged_on(new DateTime)
-        .has_access(false)
-        .save
+      val newUser = User.createRecord.alias(joiner)
+      newUser.name("")
+      newUser.channel(channel)
+      newUser.hostname(hostname)
+      newUser.karma(0)
+      newUser.is_admin(false)
+      newUser.logged_on(new DateTime)
+      newUser.save
       newUser
     } else {
       User where (_.hostname eqs hostname) modify (_.logged_on setTo new DateTime) and
         (_.alias setTo joiner)
-      val userQuery = User where (_.hostname eqs hostname) fetch
-      userQuery(0)
+      user.get
     }
   }
-  
 
-  def isOps(joiner: String, hostname: String) {
-    config.getList("opsList").foreach { isOps =>
-      if (hostname == isOps) {
-        op(channel, joiner)
-      }
+  def isOps(joiner: String, hostname: String, channel: String) {
+    config.getList("opsList").foreach {
+      isOps =>
+        if (hostname == isOps) {
+          op(channel, joiner)
+        }
     }
   }
 
@@ -164,7 +165,7 @@ object SGir extends PircBot {
   }
 
   def main(args: Array[String]): Unit = {
-      connect(Config.config("ircServer"))
-      Config.config.getList("channels").foreach(joinChannel(_))
-    }
+    connect(Config.config("ircServer"))
+    Config.config.getList("channels").foreach(joinChannel(_))
+  }
 }

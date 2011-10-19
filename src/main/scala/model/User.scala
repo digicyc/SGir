@@ -11,6 +11,8 @@ import record.{MongoMetaRecord, MongoRecord}
 
 
 class User private() extends MongoRecord[User] with ObjectIdPk[User] {
+  def meta = User
+
   object alias extends StringField(this, 255)
   object name extends StringField(this, 255)
   object channel extends StringField(this, 255)
@@ -23,4 +25,6 @@ class User private() extends MongoRecord[User] with ObjectIdPk[User] {
   object has_ops extends BooleanField(this, false)
 }
 
-object User extends User with MongoMetaRecord[User]
+object User extends User with MongoMetaRecord[User] {
+  override def collectionName = "user"
+}
