@@ -2,12 +2,12 @@ name := "SGir"
 
 version := "0.9.1"
 
-scalaVersion := "2.9.0-1"
+scalaVersion := "2.9.1"
 
 libraryDependencies ++= {
-  val liftVersion = "2.4-M3"
+  val liftVersion = "2.4-M4"
   Seq(
-    "com.foursquare" %% "rogue" % "1.0.22" intransitive(),
+    "com.foursquare" %% "rogue" % "1.0.27" intransitive(),
     "net.liftweb" %% "lift-mongodb-record" % liftVersion,
     "net.liftweb" %% "lift-mongodb" % liftVersion,
     "org.specs2" %% "specs2" % "1.6.1"
