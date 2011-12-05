@@ -4,7 +4,7 @@ import model.{User, MongoConfig}
 import org.jibble.pircbot.PircBot
 import org.joda.time.DateTime
 import com.foursquare.rogue.Rogue._
-
+import antitech.sgir.Handles._
 
 object SGir extends PircBot {
   private val config = Config.config
@@ -25,7 +25,10 @@ object SGir extends PircBot {
   // Is called whenever any message is sent.
   override def onMessage(chan: String, sender: String,
                          login: String, host: String,
-                         msg: String): Unit = {
+                         msg: String) = {
+    val message = Message(chan, sender, login, host, msg)
+    MessageActor ! message
+
     // = Commands are for Admin and Control.
     if (msg.startsWith("=") && isAdminHost(host)) {
       // First check hostname in order to allow commands.
@@ -99,6 +102,7 @@ object SGir extends PircBot {
         sendMessage(chan, "[o_O]")
       }
     }
+    message
   }
 
   // Action thrown whenever anyone is kicked in
