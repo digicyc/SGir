@@ -4,6 +4,10 @@ version := "0.9.1"
 
 scalaVersion := "2.9.1"
 
+seq(ProguardPlugin.proguardSettings :_*)
+
+proguardOptions += keepMain("antitech.sgir.SGir")
+
 libraryDependencies ++= {
   val liftVersion = "2.4-M4"
   Seq(
