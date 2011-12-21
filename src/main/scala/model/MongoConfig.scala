@@ -6,11 +6,8 @@ package antitech.sgir.model
 
 import net.liftweb.mongodb._
 import net.lag.configgy.Configgy
-import com.mongodb.{Mongo, ServerAddress}
+import com.mongodb.{ServerAddress, Mongo}
 
-object AdminDb extends MongoIdentifier {
-  val jndiName = "admin"
-}
 
 object MongoConfig {
   def mUser = Configgy.config("mongo.user")
@@ -20,8 +17,15 @@ object MongoConfig {
     val srvr = new ServerAddress(
       Configgy.config("mongo.host", "127.0.0.1"),
       Configgy.config("mongo.port", 27017)
-    )
+      )
     MongoDB.defineDb(DefaultMongoIdentifier, new Mongo(srvr), "sgir")
-    MongoDB.defineDb(AdminDb, new Mongo(srvr), "admin")
+  }
+  
+  def initTest = {
+    val srvr = new ServerAddress(
+      Configgy.config("test.mongo.host", "127.0.0.1"),
+      Configgy.config("test.mongo.port", 27017)
+    )
+    MongoDB.defineDb(DefaultMongoIdentifier, new Mongo(srvr), "testsgir")
   }
 }
