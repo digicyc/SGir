@@ -42,6 +42,7 @@ target
 lib_managed
 src_managed
 project/boot
+project/target
 
 # vim files
 *.sw*

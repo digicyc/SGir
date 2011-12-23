@@ -49,33 +49,7 @@ object SGir extends PircBot {
           arguments.foreach(op(chan, _))
         case "=deop" =>
           arguments.foreach(deOp(chan, _))
-        /*case "=print" =>
-          arguments.head.toLowerCase match {
-            case " stats" =>
-              arguments.tail.head match {
-                case "2panel" =>
-                  val statSheet = socPrint.getStats("2panel")
-                  statSheet.foreach((x) =>
-                    sendMessage(chan, "2Panel: " + x._1 + ": " + x._2))
-                case "3panel" =>
-                  val statSheet = socPrint.getStats("3panel")
-                  statSheet.foreach((x) =>
-                    sendMessage(chan, "3Panel: " + x._1 + ": " + x._2))
-                case "postcard" =>
-                  val statSheet = socPrint.getStats("postcard")
-                  statSheet.foreach((x) =>
-                    sendMessage(chan, "PostCard: " + x._1 + ": " + x._2))
-                case "all" =>
-                  socPrint.getStats("2panel").foreach((x) =>
-                    sendMessage(chan, "2Panel: " + x._1 + ": " + x._2))
-                  socPrint.getStats("3panel").foreach((x) =>
-                    sendMessage(chan, "3Panel: " + x._1 + ": " + x._2))
-                  socPrint.getStats("postcard").foreach((x) =>
-                    sendMessage(chan, "PostCard: " + x._1 + ": " + x._2))
-                case _ =>
-                  sendMessage(chan, "No option: " + arguments.head)
-              }
-          }*/
+
         case _ => None
       }
     }

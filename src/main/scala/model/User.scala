@@ -15,7 +15,7 @@ class User private() extends MongoRecord[User] with ObjectIdPk[User] {
 
   object alias extends StringField(this, 255)
   object name extends StringField(this, 255)
-  object channel extends StringField(this, 255)
+  object channel_perms extends MongoMapField[User,  String](this)
   object hostname extends StringField(this, 255)
   object karma extends LongField(this, 0)
   object is_admin extends BooleanField(this, false)
