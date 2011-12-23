@@ -29,5 +29,5 @@ Copyright (c) 2010 - 2011 Aaron Allred
 
 Published under the MIT License, see LICENSE_
 
-.. |sgir| image:: url
-.. _LICENSE: url
+.. |sgir| image:: https://github.com/digicyc/SGir/raw/master/gir_sit.jpg
+.. _LICENSE: https://github.com/digicyc/SGir/blob/master/LICENSE.rst
