@@ -14,11 +14,11 @@ libraryDependencies ++= {
     "com.foursquare" %% "rogue" % "1.0.27" intransitive(),
     "net.liftweb" %% "lift-mongodb-record" % liftVersion,
     "net.liftweb" %% "lift-mongodb" % liftVersion,
-    "org.specs2" %% "specs2" % "1.6.1"
+    "org.specs2" %% "specs2" % "1.9" % "test"
   )
 }
 
-resolvers ++= Seq("snapshots" at "http://scala-tools.org/repo-snapshots",
-                  "releases"  at "http://scala-tools.org/repo-releases",
+resolvers ++= Seq("snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
+                  "releases"  at "http://oss.sonatype.org/content/repositories/releases",
                   "Java.net Maven2 Repository" at "http://download.java.net/maven/2/"
 )
