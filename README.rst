@@ -25,7 +25,7 @@ Reasons
 
 License
 =======
-Copyright (c) 2010 - 2011 Aaron Allred
+Copyright (c) 2010 - 2012 Aaron Allred
 
 Published under the MIT License, see LICENSE_
 
