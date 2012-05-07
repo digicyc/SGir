@@ -1,6 +1,6 @@
 package antitech.sgir
 
-import model.{User, MongoConfig}
+import model.MongUser
 import org.jibble.pircbot.PircBot
 import org.joda.time.DateTime
 import com.foursquare.rogue.Rogue._
@@ -13,7 +13,6 @@ object SGir extends PircBot {
 
   setName(botName)
   setLogin(botName)
-  MongoConfig.init
 
   /**
     * Will check everyone in each channel we are in into our system.
@@ -104,25 +103,8 @@ object SGir extends PircBot {
    * checkin user or add them into DB if not already.
    * We want this to return a model.User.
    */
-  def checkIn(channel: String, joiner: String, login: String, hostname: String): User = {
-    val user = User where (_.hostname eqs hostname) get
-
-    if (user == None || user.size < 1) {
-      // If no user can be found then we create em.
-      val newUser = User.createRecord.alias(joiner)
-      newUser.name("")
-      //newUser.channel(channel)
-      newUser.hostname(hostname)
-      newUser.karma(0)
-      newUser.is_admin(false)
-      newUser.logged_on(new DateTime)
-      newUser.save
-      newUser
-    } else {
-      User where (_.hostname eqs hostname) modify (_.logged_on setTo new DateTime) and
-        (_.alias setTo joiner)
-      user.get
-    }
+  def checkIn(channel: String, joiner: String, login: String, hostname: String): MongUser = {
+    new MongUser(login, hostname, List(channel))
   }
 
   def isOps(joiner: String, hostname: String, channel: String) {

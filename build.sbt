@@ -14,7 +14,8 @@ libraryDependencies ++= {
     "com.foursquare" %% "rogue" % "1.0.27" intransitive(),
     "net.liftweb" %% "lift-mongodb-record" % liftVersion,
     "net.liftweb" %% "lift-mongodb" % liftVersion,
-    "org.specs2" %% "specs2" % "1.9" % "test"
+    "org.specs2" %% "specs2" % "1.9" % "test",
+    "com.mongodb.casbah" %% "casbah" % "2.1.5-1"
   )
 }
 

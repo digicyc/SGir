@@ -1,14 +1,24 @@
 package antitech.sgir.test
 
-import antitech.sgir.model.User
-import org.specs2.mutable._
+import antitech.sgir.model.MongUser
 
-class KarmaTests extends Specification {
-  "Hate levels when getting/adding hate" should {
-    "be incremented" in pending
-  }
+import org.specs2._
 
-  "Karma levels when adding/getting" should {
-    "be incremented" in pending
-  }
+class KarmaTests extends Specification { def is =
+  "Testing of handling a User's Karma levels"   ^
+                                                p^
+  "Karma levels when"                           ^
+    "being incremented"                         ! e1^
+    "being decremented"                         ! e2^
+                                                end
+
+  def e1 = {
+    val monguser =
+      new MongUser("sgirtest", "sgirtest@localhost.com", List("#sgir"))
+
+    mongouser.saveUser
+    monguser.addKarma(1).get
+  } mustEqual 1
+
+  def e2 = pending
 }
