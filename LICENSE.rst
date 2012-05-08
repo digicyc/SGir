@@ -1,4 +1,4 @@
-Copyright (c) 2010 - 2011 Aaron M Allred
+Copyright (c) 2010 - 2012 Aaron M Allred
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
