@@ -5,15 +5,15 @@ import com.mongodb.casbah.Imports._
 class MongUser(name: String, host: String, channels: List[String]) {
   private val mongoConn = MongoConnection()
   private val coll = mongoConn("sgir")("users")
-  private val user = MongoDbObject(
+  private val user = MongoDBObject(
     "name" -> name,
     "hostname" -> host,
     "channels" -> channels
   )
 
   // write to database our user
-  val res = coll.findOne(user)
-  if((coll.find(user)).length < 0)
+  private val res = coll.findOne(user)
+  if(res == None)
     coll += user
 
   private def getUser =
@@ -24,17 +24,18 @@ class MongUser(name: String, host: String, channels: List[String]) {
   }
 
   def addKarma(amount: Int): Option[Int] = {
-    coll.update(pfid, $inc("karma", amount))
+    coll.update(getUser, $inc("karma" -> amount))
     Option(0)
 
   }
 
-  def subKarma(user: String): Int = {
-    coll.update()
+  def subKarma(amount: Int): Int = {
+    //coll.update(getUser, $dec("karma" -> amount))
+    0
   }
 
   def getKarma: Int = {
-    user("karma")
+    user.getAs[Int]("karma").get
   }
 
 }

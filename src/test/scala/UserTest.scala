@@ -17,8 +17,8 @@ class UserTest extends Specification { def is =
 
 
   def e1 = {
-
-  } pending
+    pending
+  }
   def e2 = pending
   def e3 = pending
 }

@@ -16,7 +16,6 @@ class KarmaTests extends Specification { def is =
     val monguser =
       new MongUser("sgirtest", "sgirtest@localhost.com", List("#sgir"))
 
-    mongouser.saveUser
     monguser.addKarma(1).get
   } mustEqual 1
 
