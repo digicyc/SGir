@@ -26,7 +26,6 @@ class MongUser(name: String, host: String, channels: List[String]) {
   def addKarma(amount: Int): Option[Int] = {
     coll.update(getUser, $inc("karma" -> amount))
     Option(0)
-
   }
 
   def subKarma(amount: Int): Int = {
