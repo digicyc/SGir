@@ -1,6 +1,7 @@
 package antitech.sgir
 
-import model.MongUser
+import model.User
+import model.UserManagement
 import org.jibble.pircbot.PircBot
 import org.joda.time.DateTime
 import com.foursquare.rogue.Rogue._
@@ -103,8 +104,9 @@ object SGir extends PircBot {
    * checkin user or add them into DB if not already.
    * We want this to return a model.User.
    */
-  def checkIn(channel: String, joiner: String, login: String, hostname: String): MongUser = {
-    new MongUser(login, hostname, List(channel))
+  def checkIn(channel: String, joiner: String, login: String, hostname: String): User = {
+    val user = new UserManagement()
+    user.checkInUser(login, hostname, channel)
   }
 
   def isOps(joiner: String, hostname: String, channel: String) {

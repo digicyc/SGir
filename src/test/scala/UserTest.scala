@@ -3,14 +3,15 @@ package antitech.sgir.test
 /**
  * Test cases for managing our Users.
  */
-import antitech.sgir.models.UserManagement
+import antitech.sgir.model.UserManagement
 
 import org.specs2.mutable._
 
 class UserTest extends Specification {
   "Checking in a 'User'" should {
     "create user if no record found" in {
-      
+      val userM = new UserManagement()
+      val user = userM.checkInUser("testuser", "testhost", "testchannel")
     }
     "should use existing user record" in {
       pending
