@@ -28,7 +28,6 @@ object SGir extends PircBot {
                          msg: String): Unit = {
     // = Commands are for Admin and Control.
     if (msg.startsWith("=") && isAdminHost(host)) {
-      // First check hostname in order to allow commands.
       val command = msg.split(" ").head.toLowerCase
       val arguments = msg.split(" ").drop(1).toList
 
