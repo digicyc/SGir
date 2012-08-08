@@ -1,4 +1,4 @@
-package antitech.sgir.model
+package codeoptimus.sgir.model
 
 /**
  *  A singleton Object which just establishes a MongoDB connection.

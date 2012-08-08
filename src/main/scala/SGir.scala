@@ -1,4 +1,4 @@
-package antitech.sgir
+package codeoptimus.sgir
 
 import model.User
 import model.UserManagement

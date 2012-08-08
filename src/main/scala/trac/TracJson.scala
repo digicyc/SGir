@@ -1,4 +1,4 @@
-package trac
+package codeoptimus.trac
 
 /**
  * Get Ticket information from Trac via JSON.

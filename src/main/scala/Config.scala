@@ -1,21 +1,21 @@
-/**
- * User: aaron
- * Date: 2/14/11
- * Time: 11:14 AM
- *
- */
-package antitech.sgir
+package codeoptimus.sgir
 
 import net.lag.configgy.Configgy
 import net.lag.logging.Logger
 
-object Config  {
-  Configgy.configure("conf/sgir.conf")
-  val logger = Logger.get
-  var config = Configgy.config
+import simplelib._
 
-  def reloadConfig = {
-    Configgy.configure("conf/sgir.conf")
-    config = Configgy.config
+object SimpleConfig(config: Config)  {
+  config.checkValid(ConfigFactory.defaultReference(), "sgir")
+  
+  def this() {
+    this(ConfigFactory.load("sgir"))
   }
+
+  def printSetting(path: String) {
+    println("The setting '" + path + "' is: " + config.getString(path)
+  }
+
+  def getPath = config.getString(path)
+
 }

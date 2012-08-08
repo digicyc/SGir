@@ -1,4 +1,4 @@
-package antitech.sgir.model
+package codeoptimus.sgir.model
 
 import net.liftweb.mongodb.record._
 import net.liftweb.mongodb.record.field._

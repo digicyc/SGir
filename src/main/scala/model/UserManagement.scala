@@ -1,4 +1,4 @@
-package antitech.sgir.model
+package codeoptimus.sgir.model
 
 import com.foursquare.rogue.Rogue._
 

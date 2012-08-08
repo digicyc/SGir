@@ -1,6 +1,6 @@
-package antitech.sgir.test
+package codeoptimus.sgir.test
 
-import antitech.sgir.model.MongUser
+import codeoptimus.sgir.model.MongUser
 
 import org.specs2.mutable._
 

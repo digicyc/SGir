@@ -1,9 +1,9 @@
-package antitech.sgir.test
+package codeoptimus.sgir.test
 
 /**
  * Test cases for managing our Users.
  */
-import antitech.sgir.model.UserManagement
+import codeoptimus.sgir.model.UserManagement
 
 import org.specs2.mutable._
 
