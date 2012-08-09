@@ -5,7 +5,7 @@ import net.lag.logging.Logger
 
 import simplelib._
 
-object SimpleConfig(config: Config)  {
+class SimpleConfig(config: Config)  {
   config.checkValid(ConfigFactory.defaultReference(), "sgir")
   
   def this() {
@@ -13,7 +13,7 @@ object SimpleConfig(config: Config)  {
   }
 
   def printSetting(path: String) {
-    println("The setting '" + path + "' is: " + config.getString(path)
+    println("The setting '" + path + "' is: " + config.getString(path))
   }
 
   def getPath = config.getString(path)
