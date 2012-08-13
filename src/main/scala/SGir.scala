@@ -1,16 +1,17 @@
 package codeoptimus.sgir
 
-import model.User
-import model.UserManagement
+import braincase.User
+import braincase.UserManagement
 import org.jibble.pircbot.PircBot
 import org.joda.time.DateTime
 import com.foursquare.rogue.Rogue._
+import mouthhole.Speak
 
 
 object SGir extends PircBot {
-  private val config = Config.config
-  private val botName = config.getString("botName").get
-  private val adminHost = config.getString("adminHost").get
+  private val config = SimpleConfig.getConfig
+  private val botName = config.getString("botName")
+  private val adminHost = config.getString("adminHost")
 
   setName(botName)
   setLogin(botName)
@@ -38,7 +39,7 @@ object SGir extends PircBot {
           arguments.reduceLeft[String] {
             (y, z) => y + " " + z
           })
-        case "=reload" => config.reload()
+        //case "=reload" => config.reload()
         case "=exit" => System.exit(1)
         case "=reverse" => sendMessage(chan,
           arguments.reduceLeft[String] {
@@ -101,7 +102,7 @@ object SGir extends PircBot {
 
   /**
    * checkin user or add them into DB if not already.
-   * We want this to return a model.User.
+   * We want this to return a braincase.User.
    */
   def checkIn(channel: String, joiner: String, login: String, hostname: String): User = {
     val user = new UserManagement()

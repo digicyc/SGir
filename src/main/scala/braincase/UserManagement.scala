@@ -1,4 +1,4 @@
-package codeoptimus.sgir.model
+package codeoptimus.sgir.braincase
 
 import com.foursquare.rogue.Rogue._
 

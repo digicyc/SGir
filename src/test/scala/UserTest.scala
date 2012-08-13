@@ -3,7 +3,7 @@ package codeoptimus.sgir.test
 /**
  * Test cases for managing our Users.
  */
-import codeoptimus.sgir.model.UserManagement
+import codeoptimus.sgir.braincase.UserManagement
 
 import org.specs2.mutable._
 
