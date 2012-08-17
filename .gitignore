@@ -64,3 +64,4 @@ project/target
 
 # Pax Runner (for easy OSGi launching)
 runner
+src/main/resources/sgir.conf

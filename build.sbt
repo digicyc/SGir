@@ -11,7 +11,7 @@ proguardOptions += keepMain("antitech.sgir.SGir")
 libraryDependencies ++= {
   val liftVersion = "2.4-M4"
   Seq(
-    "com.foursquare" %% "rogue" % "1.0.27" intransitive(),
+    "com.foursquare" %% "rogue" % "1.1.8" intransitive(),
     "net.liftweb" %% "lift-mongodb-record" % liftVersion,
     "net.liftweb" %% "lift-mongodb" % liftVersion,
     "org.specs2" %% "specs2" % "1.9" % "test",

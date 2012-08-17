@@ -4,7 +4,7 @@ log {
     level = "debug"
 }
 
-botName = "SGir"
+botName = "SGirClone"
 ircServer = "irc.freenode.net"
 channels = ["#chan1", "#botfactory", "#chan2"]
 port = 3000
@@ -17,11 +17,3 @@ jabberId = "sgir"
 jabberPass = " "
 jabberList = ["test@jabber.org", "myJID@jabber.org"]
 
-xmpie {
-  username = ""
-  password = ""
-}
-
-test {
-
-}
