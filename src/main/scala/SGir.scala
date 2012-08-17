@@ -110,7 +110,9 @@ object SGir extends PircBot {
   }
 
   def isOps(joiner: String, hostname: String, channel: String) {
-    config.getList("opsList").foreach {
+    import scala.collection.JavaConversions._
+
+    config.getStringList("opsList").toList.foreach {
       isOps =>
         if (hostname == isOps) {
           op(channel, joiner)
@@ -127,7 +129,9 @@ object SGir extends PircBot {
   }
 
   def main(args: Array[String]): Unit = {
-    connect(Config.config("ircServer"))
-    Config.config.getList("channels").foreach(joinChannel(_))
+    import scala.collection.JavaConversions._
+
+    connect(config.getString("ircServer"))
+    config.getStringList("channels").toList.foreach(joinChannel(_))
   }
 }

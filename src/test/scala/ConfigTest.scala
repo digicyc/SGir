@@ -6,7 +6,7 @@ class ConfigTest extends Specification {
 
   "Config file path" should {
     "be pointed correctly" in {
-      
+      pending
     }
   }
 }
