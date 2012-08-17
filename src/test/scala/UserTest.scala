@@ -3,18 +3,28 @@ package codeoptimus.sgir.test
 /**
  * Test cases for managing our Users.
  */
-import codeoptimus.sgir.braincase.UserManagement
+import codeoptimus.sgir.braincase.{IRCUser, UserManagement}
+import codeoptimus.sgir.model.MongoConfig
+import com.foursquare.rogue.Rogue._
 
 import org.specs2.mutable._
 
 class UserTest extends Specification {
+  MongoConfig.init
+
   "Checking in a 'User'" should {
     "create user if no record found" in {
       val userM = new UserManagement()
-      val user = userM.checkInUser("testuser", "testhost", "testchannel")
+      val theyExist =
+        userM.checkInUser("testuser", "testhost", "testchannel")
+
+      theyExist.name.is mustEqual "testuser"
     }
     "should use existing user record" in {
-      pending
+      val userCheck =
+        IRCUser where (_.name eqs "testuser") get
+
+      userCheck.get.hostname.is mustEqual "testhost"
     }
     "should track all channels we both are in" in {
       pending

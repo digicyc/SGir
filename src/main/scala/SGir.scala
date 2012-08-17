@@ -1,6 +1,6 @@
 package codeoptimus.sgir
 
-import braincase.User
+import braincase.IRCUser
 import braincase.UserManagement
 import org.jibble.pircbot.PircBot
 import org.joda.time.DateTime
@@ -104,7 +104,7 @@ object SGir extends PircBot {
    * checkin user or add them into DB if not already.
    * We want this to return a braincase.User.
    */
-  def checkIn(channel: String, joiner: String, login: String, hostname: String): User = {
+  def checkIn(channel: String, joiner: String, login: String, hostname: String): IRCUser = {
     val user = new UserManagement()
     user.checkInUser(login, hostname, channel)
   }

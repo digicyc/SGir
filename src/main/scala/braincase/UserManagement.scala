@@ -10,11 +10,11 @@ class UserManagement {
    */
   def checkInUser(name: String, host: String, channel: String) = {
     val user =
-      User where (_.name eqs name) get
+      IRCUser where (_.name eqs name) get
 
     if(user == None) {
       // If user doesn't exist lets create them.
-      val newUser = User.createRecord
+      val newUser = IRCUser.createRecord
         .name(name)
         .hostname(host)
         .channels(List(channel))
@@ -31,7 +31,7 @@ class UserManagement {
    */
   def addKarma(name: String, amount: Int): Option[Int] = {
     val user = 
-      User where (_.name eqs name) modify (_.karma inc amount)
+      IRCUser where (_.name eqs name) modify (_.karma inc amount)
 
     Option(0)
   }
@@ -41,7 +41,7 @@ class UserManagement {
    */
   def getKarma(name: String): Int = {
     val user =
-      User where (_.name eqs name) get
+      IRCUser where (_.name eqs name) get
 
     0  
   }
