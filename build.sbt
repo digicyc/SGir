@@ -16,7 +16,8 @@ libraryDependencies ++= {
     "net.liftweb" %% "lift-mongodb" % liftVersion,
     "org.specs2" %% "specs2" % "1.9" % "test",
     "com.mongodb.casbah" %% "casbah" % "2.1.5-1",
-    "org.skife.com.typesafe.config" % "typesafe-config" % "0.3.0"
+    "org.skife.com.typesafe.config" % "typesafe-config" % "0.3.0",
+    "com.codahale" %% "logula" % "2.1.3"
   )
 }
 
@@ -29,5 +30,6 @@ resolvers += {
 
 resolvers ++= Seq("snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
                   "releases"  at "http://oss.sonatype.org/content/repositories/releases",
-                  "Java.net Maven2 Repository" at "http://download.java.net/maven/2/"
+                  "Java.net Maven2 Repository" at "http://download.java.net/maven/2/",
+                  "repo.codahale.com" at "http://repo.codahale.com"
 )

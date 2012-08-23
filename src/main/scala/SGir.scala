@@ -6,12 +6,15 @@ import org.jibble.pircbot.PircBot
 import org.joda.time.DateTime
 import com.foursquare.rogue.Rogue._
 import mouthhole.Speak
+import com.codahale.logula.Logging
 
 
-object SGir extends PircBot {
+object SGir extends PircBot with Logging {
   private val config = SimpleConfig.getConfig
   private val botName = config.getString("botName")
   private val adminHost = config.getString("adminHost")
+
+  LogSetup.initLogger
 
   setName(botName)
   setLogin(botName)
@@ -131,6 +134,7 @@ object SGir extends PircBot {
   def main(args: Array[String]): Unit = {
     import scala.collection.JavaConversions._
 
+    log.info("SGir Initiated.")
     connect(config.getString("ircServer"))
     config.getStringList("channels").toList.foreach(joinChannel(_))
   }
