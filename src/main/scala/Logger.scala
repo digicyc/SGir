@@ -15,7 +15,7 @@ object LogSetup {
       log.console.threshold = Level.INFO
 
       log.file.enabled = true
-      log.file.filename = "~/log/sgir/sgir.log"
+      log.file.filename = "log/sgir/sgir.log"
       log.file.maxSize = 10 * 1024
       log.file.retainedFiles = 5
 

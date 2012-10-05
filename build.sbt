@@ -1,12 +1,16 @@
+import AssemblyKeys._
+
 name := "SGir"
+
+assemblySettings
+
+mainClass in assembly := Some("codeoptimus.sgir.SGir")
+
+jarName in assembly := "SGir.jar"
 
 version := "0.9.1"
 
 scalaVersion := "2.9.1"
-
-seq(ProguardPlugin.proguardSettings :_*)
-
-proguardOptions += keepMain("antitech.sgir.SGir")
 
 libraryDependencies ++= {
   val liftVersion = "2.4-M4"
