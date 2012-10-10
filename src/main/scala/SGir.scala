@@ -42,7 +42,6 @@ object SGir extends PircBot with Logging {
           arguments.reduceLeft[String] {
             (y, z) => y + " " + z
           })
-        //case "=reload" => config.reload()
         case "=exit" => System.exit(1)
         case "=reverse" => sendMessage(chan,
           arguments.reduceLeft[String] {
