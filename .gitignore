@@ -14,6 +14,8 @@ conf/sgir.conf
 
 # logs
 derby.log
+log/
+logs/
 
 smack_3_1_0
 

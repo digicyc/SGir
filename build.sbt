@@ -20,7 +20,6 @@ libraryDependencies ++= {
     "net.liftweb" %% "lift-mongodb" % liftVersion,
     "org.specs2" %% "specs2" % "1.9" % "test",
     "com.mongodb.casbah" %% "casbah" % "2.1.5-1",
-    "org.skife.com.typesafe.config" % "typesafe-config" % "0.3.0",
     "com.codahale" %% "logula" % "2.1.3",
     "com.typesafe.akka" % "akka-actor" % "2.0.3"
   )
