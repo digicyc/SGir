@@ -1,4 +1,4 @@
-package codeoptimus.sgir.model
+package codeoptimus.sgir.braincase.model
 
 /**
  *  A singleton Object which just establishes a MongoDB connection.

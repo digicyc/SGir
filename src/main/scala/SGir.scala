@@ -1,11 +1,14 @@
 package codeoptimus.sgir
 
-import braincase.IRCUser
-import braincase.UserManagement
+import codeoptimus.sgir.braincase.model.IRCUser
+import codeoptimus.sgir.braincase.UserManagement
+import config.{LogSetup, SimpleConfig}
+
+
 import org.jibble.pircbot.PircBot
 import org.joda.time.DateTime
 import com.foursquare.rogue.Rogue._
-import mouthhole.Speak
+import codeoptimus.sgir.mouthhole.Speak
 import com.codahale.logula.Logging
 
 
@@ -51,7 +54,6 @@ object SGir extends PircBot with Logging {
           arguments.foreach(op(chan, _))
         case "=deop" =>
           arguments.foreach(deOp(chan, _))
-
         case _ => None
       }
     }

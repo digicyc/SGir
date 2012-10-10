@@ -1,4 +1,4 @@
-package codeoptimus.sgir.braincase
+package codeoptimus.sgir.braincase.model
 
 import net.liftweb.mongodb.record._
 import net.liftweb.mongodb.record.field._

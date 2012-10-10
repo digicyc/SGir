@@ -3,11 +3,12 @@ package codeoptimus.sgir.test
 /**
  * Test cases for managing our Users.
  */
-import codeoptimus.sgir.braincase.{IRCUser, UserManagement}
-import codeoptimus.sgir.model.MongoConfig
-import com.foursquare.rogue.Rogue._
+import codeoptimus.sgir.braincase.UserManagement
+import codeoptimus.sgir.braincase.model.IRCUser
+import codeoptimus.sgir.braincase.model.MongoConfig
 
 import org.specs2.mutable._
+import com.foursquare.rogue.Rogue._
 
 class UserTest extends Specification {
   MongoConfig.init

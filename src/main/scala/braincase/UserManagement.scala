@@ -1,5 +1,7 @@
 package codeoptimus.sgir.braincase
 
+import model.IRCUser
+
 import com.foursquare.rogue.Rogue._
 
 class UserManagement {
@@ -43,7 +45,7 @@ class UserManagement {
     val user =
       IRCUser where (_.name eqs name) get
 
-    0  
+    0
   }
 
 }

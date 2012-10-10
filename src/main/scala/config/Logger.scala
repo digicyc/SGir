@@ -1,4 +1,4 @@
-package codeoptimus.sgir
+package codeoptimus.sgir.config
 
 import com.codahale.logula.Logging
 import org.apache.log4j.Level

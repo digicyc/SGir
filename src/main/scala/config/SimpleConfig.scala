@@ -1,4 +1,4 @@
-package codeoptimus.sgir
+package codeoptimus.sgir.config
 
 import com.typesafe.config._
 
