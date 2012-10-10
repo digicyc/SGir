@@ -7,6 +7,7 @@ import config.{LogSetup, SimpleConfig}
 
 
 import org.jibble.pircbot.PircBot
+import org.jibble.pircbot.User
 import org.joda.time.DateTime
 import com.foursquare.rogue.Rogue._
 import codeoptimus.sgir.mouthhole.Speak
@@ -28,8 +29,11 @@ object SGir extends PircBot with Logging {
   /**
     * Will check everyone in each channel we are in into our system.
     */
-  def checkChannelIn = {
-    val allUsers =  ""
+  def checkChannelIn(channel: String) = {
+    import scala.collection.JavaConversions._
+
+    val allUsers: Array[User] = getUsers(channel)
+    allUsers.toList.foreach((user: User) => println(user.getNick()))
   }
 
   // Is called whenever any message is sent.
@@ -119,6 +123,8 @@ object SGir extends PircBot with Logging {
    * We want this to return a braincase.User.
    */
   def checkIn(channel: String, joiner: String, login: String, hostname: String): IRCUser = {
+    checkChannelIn(channel)
+
     val user = new UserManagement()
     user.checkInUser(login, hostname, channel)
   }
