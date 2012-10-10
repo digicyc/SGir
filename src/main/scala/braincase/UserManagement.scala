@@ -5,8 +5,6 @@ import model.IRCUser
 import com.foursquare.rogue.Rogue._
 
 class UserManagement {
-  // TODO: Decide to pass in User object or keep as Global Object.
-
   /**
    * Check a User into MongoDB
    */

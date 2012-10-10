@@ -21,16 +21,12 @@ libraryDependencies ++= {
     "org.specs2" %% "specs2" % "1.9" % "test",
     "com.mongodb.casbah" %% "casbah" % "2.1.5-1",
     "org.skife.com.typesafe.config" % "typesafe-config" % "0.3.0",
-    "com.codahale" %% "logula" % "2.1.3"
+    "com.codahale" %% "logula" % "2.1.3",
+    "com.typesafe.akka" % "akka-actor" % "2.0.3"
   )
 }
 
-resolvers += {
-  val typesafeRepoUrl = new java.net.URL("http://repo.typesafe.com/typesafe/releases")
-  val pattern = Patterns(false,
-    "[organisation]/[module]/[sbtversion]/[revision]/[type]s/[module](-[classifier])-[revision].[ext]")
-  Resolver.url("Typesafe Repository", typesafeRepoUrl)(pattern)
-}
+resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
 
 resolvers ++= Seq("snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
                   "releases"  at "http://oss.sonatype.org/content/repositories/releases",

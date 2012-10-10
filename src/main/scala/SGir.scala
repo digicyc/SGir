@@ -2,6 +2,7 @@ package codeoptimus.sgir
 
 import codeoptimus.sgir.braincase.model.IRCUser
 import codeoptimus.sgir.braincase.UserManagement
+import comm.IRCPacket
 import config.{LogSetup, SimpleConfig}
 
 
@@ -10,6 +11,8 @@ import org.joda.time.DateTime
 import com.foursquare.rogue.Rogue._
 import codeoptimus.sgir.mouthhole.Speak
 import com.codahale.logula.Logging
+import commands.Command
+import java.util.{TimerTask, Timer}
 
 
 object SGir extends PircBot with Logging {
@@ -33,10 +36,12 @@ object SGir extends PircBot with Logging {
   override def onMessage(chan: String, sender: String,
                          login: String, host: String,
                          msg: String): Unit = {
+
+    val ircPacket = IRCPacket(chan,sender,login,host,msg)
+
     // = Commands are for Admin and Control.
     if (msg.startsWith("=") && isAdminHost(host)) {
-      val command = msg.split(" ").head.toLowerCase
-      val arguments = msg.split(" ").drop(1).toList
+      val (command, arguments) = Command.parseArguments(msg)
 
       command match {
         case "=join" =>
@@ -104,6 +109,11 @@ object SGir extends PircBot with Logging {
     checkIn(channel, joiner, login, hostname)
   }
 
+  override def onDisconnect() {
+    val timer = new Timer()
+    timer.schedule(new ConnectionTimer(), 100000)
+  }
+
   /**
    * checkin user or add them into DB if not already.
    * We want this to return a braincase.User.
@@ -133,10 +143,23 @@ object SGir extends PircBot with Logging {
   }
 
   def main(args: Array[String]): Unit = {
+    log.info("SGir Initiated.")
+    connect
+  }
+
+  def connect {
     import scala.collection.JavaConversions._
 
-    log.info("SGir Initiated.")
-    connect(config.getString("ircServer"))
+    super.connect(config.getString("ircServer"))
     config.getStringList("channels").toList.foreach(joinChannel(_))
+  }
+
+  // A timer gets set to babysit a reconnect.
+  private class ConnectionTimer extends TimerTask {
+    def run() {
+      if(!isConnected()) {
+        connect
+      }
+    }
   }
 }

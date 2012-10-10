@@ -27,7 +27,7 @@ class UserTest extends Specification {
 
       userCheck.get.hostname.is mustEqual "testhost"
     }
-    "should track all channels we both are in" in {
+    "should track all channels we're joined to" in {
       pending
     }
   }
