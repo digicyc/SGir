@@ -1,12 +1,4 @@
-import AssemblyKeys._
-
 name := "SGir"
-
-assemblySettings
-
-mainClass in assembly := Some("codeoptimus.sgir.SGir")
-
-jarName in assembly := "SGir.jar"
 
 version := "0.9.1"
 
